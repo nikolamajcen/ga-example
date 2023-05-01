@@ -16,8 +16,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build project
-        run: xcodebuild -project GA-Example.xcodeproj -scheme GA-Example -configuration Debug build
-
-      - name: Run tests
-        run: xcodebuild -project GA-Example.xcodeproj -scheme GA-Example -configuration Debug test -destination 'platform=iOS Simulator,name=iPhone 14'
+      - name: Build and run tests
+        run: xcodebuild test -project GA-Example.xcodeproj -scheme GA-Example -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max' -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO
