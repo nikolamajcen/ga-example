@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build project
-        run: xcodebuild -workspace GA-Example.xcproject -scheme GA-Example -configuration Debug build
+        run: xcodebuild -workspace GA-Example.xcodeproj -scheme GA-Example -configuration Debug build
 
       - name: Run tests
-        run: xcodebuild -workspace GA-Example.xcproject -scheme GA-Example -configuration Debug test -destination 'platform=iOS Simulator,name=iPhone 14'
+        run: xcodebuild -workspace GA-Example.xcodeproj -scheme GA-Example -configuration Debug test -destination 'platform=iOS Simulator,name=iPhone 14'
