@@ -1,0 +1,23 @@
+name: iOS Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build project
+        run: xcodebuild -workspace GA-Example.xcproject -scheme GA-Example -configuration Debug build
+
+      - name: Run tests
+        run: xcodebuild -workspace GA-Example.xcproject -scheme GA-Example -configuration Debug test -destination 'platform=iOS Simulator,name=iPhone 14'
