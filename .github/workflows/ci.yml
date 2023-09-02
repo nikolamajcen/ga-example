@@ -6,15 +6,30 @@ on:
       - main
   pull_request:
     branches:
-      - main
+      - '*'
 
 jobs:
   build:
     runs-on: macos-latest
 
+    env:
+      PROJECT_NAME: GA-Example
+      SCHEME_NAME: GA-Example
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Build and run tests
-        run: xcodebuild test -project GA-Example.xcodeproj -scheme GA-Example -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max' -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO
+        run: >
+          set 
+            -o pipefail
+          && 
+          xcodebuild test 
+            -project ${{env.PROJECT_NAME}}.xcodeproj
+            -scheme ${{env.SCHEME_NAME}}
+            -sdk iphonesimulator
+            -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
+            -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO
+          |
+          xcpretty
