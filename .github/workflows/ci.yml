@@ -17,15 +17,18 @@ jobs:
 
     steps:
       - name: Checkout code
+        id: checkout_code
         uses: actions/checkout@v3
 
       - name: Set up destination
+        id: set_up_destination
         run: |
           name=$(xcrun simctl list devices | grep -oE 'iPhone.*?[^\(]+' | tail -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
           echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
-          echo "DESTINATION_PLATFORM=platform" >> $GITHUB_ENV
+          echo "DESTINATION_PLATFORM=iOS Simulator" >> $GITHUB_ENV
 
       - name: Build
+        id: build
         env:
           SCHEME_NAME: GA-Example
         run: |
@@ -37,6 +40,7 @@ jobs:
           | xcpretty --color && exit ${PIPESTATUS[0]}
 
       - name: Test
+        id: test
         env:
           SCHEME_NAME: GA-Example
         run: |
