@@ -9,10 +9,12 @@ on:
       - "*"
 
 jobs:
-  env: 
-    PROJECT_NAME: GA-Example
   build:
     runs-on: macos-latest
+
+    env: 
+      PROJECT_NAME: GA-Example
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
