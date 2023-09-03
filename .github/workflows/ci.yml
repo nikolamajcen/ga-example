@@ -15,23 +15,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Select iOS simulator
-        env:
-          DESTINATION_PLATFORM: iOS Simulator
-        run: |
-          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
-          echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
-          echo "Selected iOS Simulator: ${{ env.DESTINATION_NAME }} (${{ env.DESTINATION_PLATFORM }})"
-
       - name: Build and run tests
         env:
           PROJECT_NAME: GA-Example
           SCHEME_NAME: GA-Example
         run: |
+          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
+
           xcodebuild test \
             -project ${{ env.PROJECT_NAME }}.xcodeproj \
             -scheme ${{ env.SCHEME_NAME }} \
             -sdk iphonesimulator \
-            -destination 'platform=${{ env.DESTINATION_PLATFORM }},name=${{ env.DESTINATION_NAME }}' \
+            -destination 'platform=iOS Simulator,name=$device' \
             -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO \
           | xcpretty && exit ${PIPESTATUS[0]}
