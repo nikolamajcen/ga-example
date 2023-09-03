@@ -9,6 +9,8 @@ on:
       - "*"
 
 jobs:
+  env: 
+    PROJECT_NAME: GA-Example
   build:
     runs-on: macos-latest
     steps:
@@ -17,18 +19,25 @@ jobs:
 
       - name: Set up destination
         run: |
-          device=$(xcrun simctl list devices | grep -oE 'iPhone.*?[^\(]+' | tail -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
+          name=$(xcrun simctl list devices | grep -oE 'iPhone.*?[^\(]+' | tail -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
           echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
-          echo "DESTINATION_PLATFORM=iOS Simulator" >> $GITHUB_ENV
-          echo "Destination platform: ${{ env.DESTINATION_PLATFORM }}"
-          echo "Destination name: ${{ env.DESTINATION_NAME }}"
+          echo "DESTINATION_PLATFORM=platform" >> $GITHUB_ENV
 
-      - name: Build and test
+      - name: Build
         env:
-          PROJECT_NAME: GA-Example
           SCHEME_NAME: GA-Example
         run: |
-          xcodebuild test \
+          xcodebuild clean build \
+            -project ${{ env.PROJECT_NAME }}.xcodeproj \
+            -scheme ${{ env.SCHEME_NAME }} \
+            -sdk iphoneos
+          | xcpretty --color && exit ${PIPESTATUS[0]}
+
+      - name: Test
+        env:
+          SCHEME_NAME: GA-Example
+        run: |
+          xcodebuild clean test \
             -project ${{ env.PROJECT_NAME }}.xcodeproj \
             -scheme ${{ env.SCHEME_NAME }} \
             -sdk iphonesimulator \
