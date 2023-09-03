@@ -17,18 +17,16 @@ jobs:
 
       - name: Set up destination
         env:
-          DESTINATION_PLATFORM: iOS Simulator
+          DESTINATION_PLATFORM: "iOS Simulator"
         run: |
           device=$(xcrun simctl list devices | grep -oE 'iPhone.*?[^\(]+' | tail -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
-          echo "Selected device: $device"
-          echo "DESTINATION_NAME=$device"
           echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
           echo "Selected device: ${{ env.DESTINATION_NAME }}"
 
       - name: Build and run tests
         env:
-          PROJECT_NAME: GA-Example
-          SCHEME_NAME: GA-Example
+          PROJECT_NAME: "GA-Example"
+          SCHEME_NAME: "GA-Example"
         run: |
           xcodebuild test \
             -project ${{ env.PROJECT_NAME }}.xcodeproj \
