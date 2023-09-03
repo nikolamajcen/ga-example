@@ -20,23 +20,15 @@ jobs:
           PROJECT_NAME: GA-Example
           SCHEME_NAME: GA-Example
         run: |
-          echo "Step 1" &&
-          xcrun xctrace list devices 2&>1 &&
+          echo "Step 1"
+          xcrun xctrace list devices
           echo "====================" &&
-          echo "Step 2"  &&
-          xcrun xctrace list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+'  &&
-          echo "===================="  &&
-          echo "Step 3"  &&
-          xcrun xctrace list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+' | head -1  &&
-          echo "===================="  &&
-          echo "Step 4" &&
-          xcrun xctrace list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}'  &&
-          echo "===================="  &&
-          echo "Step 5"  &&
-          xcrun xctrace list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"  &&
-          echo "===================="  &&
-          device=$(xcrun xctrace list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//") &&
-          echo "Selected device: $device" &&
+          echo "Step 2"
+          xcrun xctrace list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+'
+          echo "====================" 
+
+          device=$(xcrun xctrace list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
+          echo "Selected device: $device"
 
           xcodebuild test \
             -project ${{ env.PROJECT_NAME }}.xcodeproj \
