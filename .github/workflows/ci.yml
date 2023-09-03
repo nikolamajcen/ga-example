@@ -20,17 +20,17 @@ jobs:
           device=$(xcrun simctl list devices | grep -oE 'iPhone.*?[^\(]+' | tail -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
           echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
           echo "DESTINATION_PLATFORM=iOS Simulator" >> $GITHUB_ENV
-          echo "Configuration: ${{ env.DESTINATION_NAME }} (${{ env.DESTINATION_PLATFORM }})"
+          echo "Destination: ${{ env.DESTINATION_NAME }} (${{ env.DESTINATION_PLATFORM }})"
 
-      - name: Build and run tests
+      - name: Build and test
         env:
-          PROJECT_NAME: "GA-Example"
-          SCHEME_NAME: "GA-Example"
+          PROJECT_NAME: GA-Example
+          SCHEME_NAME: GA-Example
         run: |
           xcodebuild test \
             -project ${{ env.PROJECT_NAME }}.xcodeproj \
             -scheme ${{ env.SCHEME_NAME }} \
             -sdk iphonesimulator \
             -destination "platform=${{ env.DESTINATION_PLATFORM }},name=${{ env.DESTINATION_NAME }}" \
-            -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO \
-          | xcpretty && exit ${PIPESTATUS[0]}
+            -enableCodeCoverage YES \
+          | xcpretty --color && exit ${PIPESTATUS[0]}
