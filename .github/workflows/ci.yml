@@ -15,34 +15,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Prepare iOS Simulator
+        env:
+          DESTINATION_PLATFORM: iOS Simulator
+        run: |
+          device=$( \
+          xcrun simctl list devices | \
+          grep -oE 'iPhone.*?[^\(]+' | \
+          tail -1 | \
+          awk '{$1=$1;print}' | \
+          sed -e "s/ Simulator$//" \
+          )
+          
+          echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
+          echo "Selected device: ${{ env.DESTINATION_NAME }}"
+
       - name: Build and run tests
         env:
           PROJECT_NAME: GA-Example
           SCHEME_NAME: GA-Example
         run: |
-          echo "Step 1"
-          xcrun xctrace list devices
-          echo "===================="
-          echo "Step 2"
-          xcrun xctrace list devices 2&>1 | grep "iPhone"
-          echo "====================" 
-          echo "Step 3"
-          xcrun xctrace list devices 2&>1 | grep "iPhone" | head -1 
-          echo "===================="
-          echo "Step 4"
-          xcrun xctrace list devices 2&>1 | grep "iPhone" | head -1 | awk '{$1=$1;print}'
-          echo "====================" 
-          echo "Step 5" 
-          xcrun xctrace list devices 2&>1 | grep "iPhone" | head -1 | awk "{$1=$1;print} | sed -e "s/ Simulator$//" 
-          echo "====================" 
-
-          device=$(xcrun xctrace list devices 2&>1 | grep "iPhone" | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
-          echo "Selected device: $device"
-
           xcodebuild test \
             -project ${{ env.PROJECT_NAME }}.xcodeproj \
             -scheme ${{ env.SCHEME_NAME }} \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=$device" \
+            -destination "platform=${{ env.DESTINATION_PLATFORM }},name=${{ env.DESTINATION_NAME }}" \
             -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO \
           | xcpretty && exit ${PIPESTATUS[0]}
