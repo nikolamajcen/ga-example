@@ -23,7 +23,7 @@ jobs:
           echo "Step 1" &&
           xcrun xctrace list devices 2&>1 &&
           echo "====================" &&
-          echo "Step 2  &&
+          echo "Step 2"  &&
           xcrun xctrace list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+'  &&
           echo "===================="  &&
           echo "Step 3"  &&
