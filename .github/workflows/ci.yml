@@ -20,7 +20,7 @@ jobs:
           PROJECT_NAME: GA-Example
           SCHEME_NAME: GA-Example
         run: |
-          device=$(xcrun simctl list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+' | head -n1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
+          device=`xcrun simctl list devices 2&>1 | grep -oE 'iPhone.*?[^\(]+' | head -n1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
           echo "Selected device: $device"
 
           xcodebuild test \
