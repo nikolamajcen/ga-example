@@ -27,19 +27,6 @@ jobs:
           echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
           echo "DESTINATION_PLATFORM=iOS Simulator" >> $GITHUB_ENV
 
-      - name: Build
-        id: build
-        env:
-          SCHEME_NAME: GA-Example
-        run: |
-          xcodebuild clean build \
-            -project ${{ env.PROJECT_NAME }}.xcodeproj \
-            -scheme ${{ env.SCHEME_NAME }} \
-            -sdk iphoneos
-            -destination "platform=${{ env.DESTINATION_PLATFORM }},name=${{ env.DESTINATION_NAME }}" \
-            CODE_SIGNING_REQUIRED=NO \
-          | xcpretty --color && exit ${PIPESTATUS[0]}
-
       - name: Test
         id: test
         env:
