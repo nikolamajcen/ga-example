@@ -20,6 +20,14 @@ jobs:
           PROJECT_NAME: GA-Example
           SCHEME_NAME: GA-Example
         run: |
+          echo "Available devices:"
+          xcrun simctl list devices
+          echo "===="
+
+          echo "Available devices:"
+          xcrun xctrace list devices
+          echo "===="
+
           device=$(xcrun simctl list devices | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
           echo "Selected device: $device"
 
