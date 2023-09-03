@@ -14,19 +14,10 @@
 		42C8AB3C2A0015C800910BF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42C8AB3B2A0015C800910BF0 /* Assets.xcassets */; };
 		42C8AB3F2A0015C800910BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C8AB3D2A0015C800910BF0 /* LaunchScreen.storyboard */; };
 		42C8AB4A2A0015C800910BF0 /* GA_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C8AB492A0015C800910BF0 /* GA_ExampleTests.swift */; };
-		42C8AB542A0015C800910BF0 /* GA_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C8AB532A0015C800910BF0 /* GA_ExampleUITests.swift */; };
-		42C8AB562A0015C800910BF0 /* GA_ExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C8AB552A0015C800910BF0 /* GA_ExampleUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		42C8AB462A0015C800910BF0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 42C8AB272A0015C700910BF0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 42C8AB2E2A0015C700910BF0;
-			remoteInfo = "GA-Example";
-		};
-		42C8AB502A0015C800910BF0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 42C8AB272A0015C700910BF0 /* Project object */;
 			proxyType = 1;
@@ -46,9 +37,6 @@
 		42C8AB402A0015C800910BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42C8AB452A0015C800910BF0 /* GA-ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GA-ExampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42C8AB492A0015C800910BF0 /* GA_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GA_ExampleTests.swift; sourceTree = "<group>"; };
-		42C8AB4F2A0015C800910BF0 /* GA-ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GA-ExampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		42C8AB532A0015C800910BF0 /* GA_ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GA_ExampleUITests.swift; sourceTree = "<group>"; };
-		42C8AB552A0015C800910BF0 /* GA_ExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GA_ExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +54,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		42C8AB4C2A0015C800910BF0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +62,6 @@
 			children = (
 				42C8AB312A0015C700910BF0 /* GA-Example */,
 				42C8AB482A0015C800910BF0 /* GA-ExampleTests */,
-				42C8AB522A0015C800910BF0 /* GA-ExampleUITests */,
 				42C8AB302A0015C700910BF0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +71,6 @@
 			children = (
 				42C8AB2F2A0015C700910BF0 /* GA-Example.app */,
 				42C8AB452A0015C800910BF0 /* GA-ExampleTests.xctest */,
-				42C8AB4F2A0015C800910BF0 /* GA-ExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,15 +95,6 @@
 				42C8AB492A0015C800910BF0 /* GA_ExampleTests.swift */,
 			);
 			path = "GA-ExampleTests";
-			sourceTree = "<group>";
-		};
-		42C8AB522A0015C800910BF0 /* GA-ExampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				42C8AB532A0015C800910BF0 /* GA_ExampleUITests.swift */,
-				42C8AB552A0015C800910BF0 /* GA_ExampleUITestsLaunchTests.swift */,
-			);
-			path = "GA-ExampleUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,24 +135,6 @@
 			productReference = 42C8AB452A0015C800910BF0 /* GA-ExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		42C8AB4E2A0015C800910BF0 /* GA-ExampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 42C8AB5F2A0015C800910BF0 /* Build configuration list for PBXNativeTarget "GA-ExampleUITests" */;
-			buildPhases = (
-				42C8AB4B2A0015C800910BF0 /* Sources */,
-				42C8AB4C2A0015C800910BF0 /* Frameworks */,
-				42C8AB4D2A0015C800910BF0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				42C8AB512A0015C800910BF0 /* PBXTargetDependency */,
-			);
-			name = "GA-ExampleUITests";
-			productName = "GA-ExampleUITests";
-			productReference = 42C8AB4F2A0015C800910BF0 /* GA-ExampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,10 +149,6 @@
 						CreatedOnToolsVersion = 14.3;
 					};
 					42C8AB442A0015C800910BF0 = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 42C8AB2E2A0015C700910BF0;
-					};
-					42C8AB4E2A0015C800910BF0 = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 42C8AB2E2A0015C700910BF0;
 					};
@@ -221,7 +169,6 @@
 			targets = (
 				42C8AB2E2A0015C700910BF0 /* GA-Example */,
 				42C8AB442A0015C800910BF0 /* GA-ExampleTests */,
-				42C8AB4E2A0015C800910BF0 /* GA-ExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,13 +185,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		42C8AB432A0015C800910BF0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		42C8AB4D2A0015C800910BF0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,15 +212,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		42C8AB4B2A0015C800910BF0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				42C8AB542A0015C800910BF0 /* GA_ExampleUITests.swift in Sources */,
-				42C8AB562A0015C800910BF0 /* GA_ExampleUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -288,11 +219,6 @@
 			isa = PBXTargetDependency;
 			target = 42C8AB2E2A0015C700910BF0 /* GA-Example */;
 			targetProxy = 42C8AB462A0015C800910BF0 /* PBXContainerItemProxy */;
-		};
-		42C8AB512A0015C800910BF0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 42C8AB2E2A0015C700910BF0 /* GA-Example */;
-			targetProxy = 42C8AB502A0015C800910BF0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -491,6 +417,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -499,6 +426,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gaexample.com.GA-ExampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -511,6 +439,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -519,46 +448,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gaexample.com.GA-ExampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GA-Example.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GA-Example";
-			};
-			name = Release;
-		};
-		42C8AB602A0015C800910BF0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "gaexample.com.GA-ExampleUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "GA-Example";
-			};
-			name = Debug;
-		};
-		42C8AB612A0015C800910BF0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "gaexample.com.GA-ExampleUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "GA-Example";
 			};
 			name = Release;
 		};
@@ -588,15 +482,6 @@
 			buildConfigurations = (
 				42C8AB5D2A0015C800910BF0 /* Debug */,
 				42C8AB5E2A0015C800910BF0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		42C8AB5F2A0015C800910BF0 /* Build configuration list for PBXNativeTarget "GA-ExampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				42C8AB602A0015C800910BF0 /* Debug */,
-				42C8AB612A0015C800910BF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
