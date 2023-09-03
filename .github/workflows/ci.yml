@@ -16,12 +16,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up destination
-        env:
-          DESTINATION_PLATFORM: "iOS Simulator"
         run: |
           device=$(xcrun simctl list devices | grep -oE 'iPhone.*?[^\(]+' | tail -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
           echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
-          echo "Selected device: ${{ env.DESTINATION_NAME }}"
+          echo "DESTINATION_PLATFORM=iOS Simulator" >> $GITHUB_ENV
+          echo "Configuration: ${{ env.DESTINATION_NAME }} (${{ env.DESTINATION_PLATFORM }})"
 
       - name: Build and run tests
         env:
