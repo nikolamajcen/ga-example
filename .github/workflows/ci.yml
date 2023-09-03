@@ -27,6 +27,6 @@ jobs:
             -project ${{ env.PROJECT_NAME }}.xcodeproj \
             -scheme ${{ env.SCHEME_NAME }} \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=$(device)' \
+            -destination "platform=iOS Simulator,name=$device" \
             -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO \
           | xcpretty && exit ${PIPESTATUS[0]}
