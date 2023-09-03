@@ -24,7 +24,7 @@ jobs:
           echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
 
           echo "Platform: ${{ env.DESTINATION_PLATFORM }}""
-          echo "Name: ${{ DESTINATION_NAME }}"
+          echo "Name: ${{ env.DESTINATION_NAME }}"
 
       - name: Build and run tests
         env:
