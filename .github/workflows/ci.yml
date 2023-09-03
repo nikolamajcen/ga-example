@@ -23,11 +23,11 @@ jobs:
           | awk '{$1=$1;print}' \
           | sed -e "s/ Simulator$//")
           "
-          echo "DESTINATION_PLATFORM=`iOS Simulator`" >> $GITHUB_ENV
-          echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
+          echo 'DESTINATION_PLATFORM="iOS Simulator"' >> $GITHUB_ENV
+          echo 'DESTINATION_NAME=$device' >> $GITHUB_ENV
 
-          echo "Platform: ${{ env.DESTIONATION_PLATFORM }}"
-          echo "Name: ${{ DESTIONATION_NAME }}"
+          echo 'Platform: ${{ env.DESTIONATION_PLATFORM }}'
+          echo 'Name: ${{ DESTIONATION_NAME }}'
 
       - name: Build and run tests
         env:
