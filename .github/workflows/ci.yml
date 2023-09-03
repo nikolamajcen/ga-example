@@ -14,7 +14,7 @@ jobs:
 
     env: 
       PROJECT_NAME: GA-Example
-      
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -29,10 +29,11 @@ jobs:
         env:
           SCHEME_NAME: GA-Example
         run: |
-          xcodebuild clean build \
+          xcodebuild clean build CODE_SIGNING_REQUIRED=NO \
             -project ${{ env.PROJECT_NAME }}.xcodeproj \
             -scheme ${{ env.SCHEME_NAME }} \
             -sdk iphoneos
+            -destination "platform=${{ env.DESTINATION_PLATFORM }},name=${{ env.DESTINATION_NAME }}" \
           | xcpretty --color && exit ${PIPESTATUS[0]}
 
       - name: Test
