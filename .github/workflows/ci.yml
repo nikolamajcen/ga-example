@@ -19,12 +19,14 @@ jobs:
         env:
           DESTINATION_PLATFORM: iOS Simulator
         run: |
-          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 \ | awk '{$1=$1;print}' \ | sed -e "s/ Simulator$//"`
+          device=$(xcrun xctrace list devices 2>&1 \
+          | grep -oE 'iPhone.*?[^\(]+' \
+          | head -1 \
+          | awk '{$1=$1;print}' \
+          | sed -e "s/ Simulator$//")
 
           echo "DESTINATION_NAME=$device" >> $GITHUB_ENV
-
-          echo "Platform: ${{ env.DESTINATION_PLATFORM }}""
-          echo "Name: ${{ env.DESTINATION_NAME }}"
+          echo "Selected iOS Simulator: ${{ env.DESTINATION_NAME }} (${{ env.DESTINATION_PLATFORM }})"
 
       - name: Build and run tests
         env:
